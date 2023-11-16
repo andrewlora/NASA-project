@@ -2,22 +2,35 @@ const API_URL = "http://localhost:8000";
 
 // Load planets and return as JSON.
 async function httpGetPlanets() {
-  const response = await fetch(`${API_URL}/planets`);
-  return await response.json();
+  try {
+    const response = await fetch(`${API_URL}/planets`);
+    return await response.json();
+  } catch (error) {
+    console.log(error);
+    return {
+      ok: false,
+    };
+  }
 }
 
 // Load launches, sort by flight number, and return as JSON.
 async function httpGetLaunches() {
-  const response = await fetch(`${API_URL}/launches`);
-  const fetchedLaunches = await response.json();
-  return fetchedLaunches.sort((a, b) => {
-    return a.flightNumber - b.flightNumber;
-  });
+  try {
+    const response = await fetch(`${API_URL}/launches`);
+    const fetchedLaunches = await response.json();
+    return fetchedLaunches.sort((a, b) => {
+      return a.flightNumber - b.flightNumber;
+    });
+  } catch (error) {
+    console.log(error);
+    return {
+      ok: false,
+    };
+  }
 }
 
 // Submit given launch data to launch system.
 async function httpSubmitLaunch(launch) {
-  // TODO: Submit given launch data to launch system.
   try {
     return await fetch(`${API_URL}/launches`, {
       method: "post",
@@ -26,7 +39,8 @@ async function httpSubmitLaunch(launch) {
       },
       body: JSON.stringify(launch),
     });
-  } catch (err) {
+  } catch (error) {
+    console.log(error);
     return {
       ok: false,
     };
@@ -40,8 +54,8 @@ async function httpAbortLaunch(id) {
     return await fetch(`${API_URL}/launches/${id}`, {
       method: "delete",
     });
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log(error);
     return {
       ok: false,
     };
