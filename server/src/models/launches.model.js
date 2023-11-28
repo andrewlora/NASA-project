@@ -2,11 +2,11 @@ const launches = new Map();
 let latestFlightNumber = 100;
 const launch = {
   flightNumber: 100,
-  mission: "Kepler Exploration X",
-  rocket: "Rocket IS1",
-  launchDate: new Date("December 27, 2030"),
-  target: "Kepler-442 b",
-  customer: ["ZTM", "NASA"],
+  mission: 'Kepler Exploration X',
+  rocket: 'Rocket IS1',
+  launchDate: new Date('December 27, 2030'),
+  target: 'Kepler-442 b',
+  customer: ['ZTM', 'NASA'],
   upcoming: true,
   success: true,
 };
@@ -28,9 +28,9 @@ function addNewLaunch(launch) {
     Object.assign(launch, {
       success: true,
       upcoming: true,
-      customers: ["ZTM", "NASA"],
+      customers: ['ZTM', 'NASA'],
       flightNumber: latestFlightNumber,
-    })
+    }),
   );
 }
 
