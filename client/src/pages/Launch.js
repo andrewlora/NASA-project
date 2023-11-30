@@ -1,17 +1,17 @@
-import { Appear, Button, Loading, Paragraph } from "arwes";
-import { useMemo } from "react";
-import Clickable from "../components/Clickable";
+import { Appear, Button, Loading, Paragraph } from 'arwes';
+import React, { useMemo } from 'react';
+import Clickable from '../components/Clickable';
 
 const Launch = (props) => {
   const selectorBody = useMemo(() => {
     return props.planets?.map((planet) => (
-      <option value={planet.kepler_name} key={planet.kepler_name}>
-        {planet.kepler_name}
+      <option value={planet.keplerName} key={planet.keplerName}>
+        {planet.keplerName}
       </option>
     ));
   }, [props.planets]);
 
-  const today = new Date().toISOString().split("T")[0];
+  const today = new Date().toISOString().split('T')[0];
 
   return (
     <Appear id="launch" animate show={props.entered}>
@@ -26,17 +26,17 @@ const Launch = (props) => {
       <ul>
         <li>Planetary radius &lt; 1.6 times Earth's radius</li>
         <li>
-          Effective stellar flux &gt; 0.36 times Earth's value and &lt; 1.11
-          times Earth's value
+          Effective stellar flux &gt; 0.36 times Earth&apos;s value and &lt;
+          1.11 times Earth's value
         </li>
       </ul>
 
       <form
         onSubmit={props.submitLaunch}
         style={{
-          display: "inline-grid",
-          gridTemplateColumns: "auto auto",
-          gridGap: "10px 20px",
+          display: 'inline-grid',
+          gridTemplateColumns: 'auto auto',
+          gridGap: '10px 20px',
         }}
       >
         <label htmlFor="launch-day">Launch Date</label>
