@@ -24,12 +24,12 @@ const connectDB = async () => {
 };
 
 const PORT = process.env.PORT || 8000;
-async function startServer() {
+function startServer() {
   // await mongoose.connect(process.env.MONGO_URL);
-  await loadPlanetsData();
 
-  server.listen(PORT, () => {
-    connectDB();
+  server.listen(PORT, async () => {
+    await connectDB();
+    await loadPlanetsData();
     console.log('listening on port ' + PORT);
   });
 }
