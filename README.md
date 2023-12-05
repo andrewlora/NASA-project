@@ -26,3 +26,7 @@ To run any automated tests, run `npm test`. This will:
 
 - Run all the client-side tests: `npm test --prefix client`
 - Run all the server-side tests: `npm test --prefix server`
+
+## SSL Certificate HTTPS
+
+To add key.pem and cert.pem, run `openssl req -x509 -newkey rsa:4096 -nodes -keyout key.pem -out cert.pem -days 365`
