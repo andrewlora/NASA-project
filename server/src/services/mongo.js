@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
+require('dotenv').config();
 /* mongoose.connection.on('open', () => {
   console.log('MongoDB connection ready !!!');
 });
@@ -8,7 +8,7 @@ mongoose.connection.on('error', (error) => {
 }); */
 
 // database connection
-dotenv.config();
+
 mongoose.set('strictQuery', false);
 async function mongoConnect() {
   try {
