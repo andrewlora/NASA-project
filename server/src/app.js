@@ -20,7 +20,7 @@ function verifyCallBack(accessToken, refreshToken, profile, done) {
   console.log('Google profile', profile);
   done(null, profile);
 }
-passport.use(new Strategy(AUTH_OPTIONS), verifyCallBack);
+passport.use(new Strategy(AUTH_OPTIONS, verifyCallBack));
 const app = express();
 app.use(helmet());
 app.use(passport.initialize());
