@@ -6,6 +6,7 @@ const {
   httpLogout,
   httpSecret,
   httpFailure,
+  checkLoggedIn,
 } = require('./auth.controller');
 const authRouter = express.Router();
 
@@ -21,12 +22,12 @@ authRouter.get(
   passport.authenticate('google', {
     failureRedirect: '/failure',
     successRedirect: '/',
-    session: false,
+    session: true,
   }),
   httpAuthGoogleCallback,
 );
 authRouter.get('/logout', httpLogout);
-authRouter.get('/secret', httpSecret);
+authRouter.get('/secret', checkLoggedIn, httpSecret);
 authRouter.get('/failure', httpFailure);
 
 module.exports = authRouter;
