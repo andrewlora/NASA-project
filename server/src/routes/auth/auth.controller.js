@@ -8,9 +8,14 @@ function httpAuthGoogleCallback(req, res) {
 function httpSecret(req, res) {
   return res.send('Your personal secret value is 42!');
 }
-function httpLogout(req, res) {
-  req.logout(); // Removes req.user and clears any logged in session
-  return res.redirect('/');
+function httpLogout(req, res, next) {
+  // Removes req.user and clears any logged in session
+  req.logout((error) => {
+    if (error) {
+      return next(error);
+    }
+    res.redirect('/');
+  });
 }
 function httpFailure(req, res) {
   return res.send('Failed to log in !!!');
