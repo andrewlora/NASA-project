@@ -18,7 +18,7 @@ jobs:
       COOKIE_KEY_2: ${{ secrets.COOKIE_KEY_2 }}
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 20.x]
+        node-version: [16.x, 20.x]
         mongodb-version: ['16.0.2']
     steps:
       - uses: actions/checkout@v3
