@@ -9,10 +9,6 @@ jobs:
     env:
       CI: true
       MONGO_URL: mongodb://localhost/NASA
-      CLIENT_ID: ${{ secrets.CLIENT_ID }}
-      CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-      COOKIE_KEY_1: ${{ secrets.COOKIE_KEY_1 }}
-      COOKIE_KEY_2: ${{ secrets.COOKIE_KEY_2 }}
     strategy:
       matrix:
         node-version: [14.x, 16.x, 20.x]
@@ -28,6 +24,11 @@ jobs:
         uses: supercharge/mongodb-github-action@1.10.0
         with:
           mongodb-db: ${{ matrix.mongodb-version }}
+      - name: Do Something with env files
+        env:
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+        run: |
+          echo $CLIENT_ID
       - run: npm install
       - run: npm run build --prefix client
       - run: npm test
